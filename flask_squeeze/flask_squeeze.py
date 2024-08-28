@@ -99,7 +99,8 @@ class Squeeze:
 				raise ValueError(f"Invalid minify choice {minify_choice} " f"at {request.path}")
 			minified = minified.encode("utf-8")
 
-		log(3, f"Minify ratio: {len(data) / len(minified):.2f}x")
+		minified_length = len(minified)
+		log(3, f"Minification ratio: {len(data) / minified_length:.2f}x" if minified_length else "Minification resulted in empty content; ratio calculation skipped.")
 		response.set_data(minified)
 
 	# Compression
