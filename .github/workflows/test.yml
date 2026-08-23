@@ -4,7 +4,8 @@ jobs:
 
   # JOB
   tests-job:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, personal-pool, homelab]
+    if: github.repository == 'thelabcorner/Flask-Squeeze'
 
     strategy:
       matrix:
@@ -61,7 +62,8 @@ jobs:
   # JOB
   cov-badge-job:
     needs: tests-job
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, personal-pool, homelab]
+    if: github.repository == 'thelabcorner/Flask-Squeeze'
     steps:
       - uses: actions/checkout@v3
       #----------------------------------------------
